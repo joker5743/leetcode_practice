@@ -9,7 +9,7 @@ class PossibleBiPartition{
 public:
 // 1.dfs + 染色问题
     bool possibleBipartition_dfs(int n, vector<vector<int>>& dislikes) {
-        vector<int> color(n+1, 0);  
+        vector<int> color(n+1, 0);
         vector<vector<int>> g(n+1);
 // nowcolor标记分到哪一组，（0,1）
 // g表示关系矩阵图
@@ -18,8 +18,8 @@ public:
             g[p[0]].push_back(p[1]);
             g[p[1]].push_back(p[0]);
         }
-        
-        for (size_t i = 0; i <= n; i++)
+
+        for (int i = 0; i <= n; i++)
         {
             if (color[i] == 0 && dfs(i, 1, color, g))
             {
@@ -47,7 +47,7 @@ public:
 
 // 2.bfs + 染色问题
     bool possibleBipartition_bfs(int n, vector<vector<int>>& dislikes) {
-        vector<int> color(n+1, 0);  
+        vector<int> color(n+1, 0);
         vector<vector<int>> g(n+1);
 // nowcolor标记分到哪一组，（0,1）
 // g表示关系矩阵图
@@ -57,7 +57,7 @@ public:
             g[p[1]].push_back(p[0]);
         }
 
-        for (size_t i = 1; i <= n; i++)
+        for (int i = 1; i <= n; i++)
         {
             if (color[i] == 0)
             {
@@ -82,7 +82,7 @@ public:
                     }
                 }
             }
-            
+
         }
         return true;
     }
@@ -99,12 +99,12 @@ public:
         {
             return;
         }
-        
+
         if (fa[x] < fa[y])
         {
             swap(x, y);
         }
-        
+
         fa[x] += fa[y];
         fa[y] = x;
     }
@@ -116,7 +116,7 @@ public:
     }
 
     bool possibleBipartition_union(int n, vector<vector<int>>& dislikes) {
-        vector<int> fa(n+1, -1);  
+        vector<int> fa(n+1, -1);
         vector<vector<int>> g(n+1);
 
         for (auto &p : dislikes)
@@ -125,9 +125,9 @@ public:
             g[p[1]].push_back(p[0]);
         }
 
-        for (size_t i = 1; i <= n; i++)
+        for (int i = 1; i <= n; i++)
         {
-            for (size_t j = 0; i < g[i].size(); i++)
+            for (int j = 0; i < g[i].size(); i++)
             {
                 unit(g[i][0], g[i][j], fa);
                 if (isconnect(i, g[i][j], fa))

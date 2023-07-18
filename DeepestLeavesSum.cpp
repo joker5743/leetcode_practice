@@ -43,7 +43,7 @@ public:
         {
             sum = 0;
             int size = qe.size();
-            for (size_t i = 0; i < size; i++)
+            for (int i = 0; i < size; i++)
             {
                 TreeNode *node = qe.front();
                 qe.pop();
@@ -52,7 +52,7 @@ public:
                     qe.emplace(node->left);
                 if (node->right != nullptr)
                     qe.emplace(node->right);
-            }           
+            }
         }
         return sum;
     }

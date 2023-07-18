@@ -36,7 +36,7 @@ public:
         vector<int> left(n,-1), right(n,-1);
         vector<TreeNode *> tree(n);
 
-        for (size_t i = 0; i < n; i++)
+        for (int i = 0; i < n; i++)
         {
             tree[i] = new TreeNode(nums[i]);
             while (!stk.empty() && nums[i] > nums[stk.back()])
@@ -51,7 +51,7 @@ public:
         }
 
         TreeNode* root = nullptr;
-        for (size_t i = 0; i < n; i++)
+        for (int i = 0; i < n; i++)
         {
             if(left[i] == -1 && right[i] == -1)
                 root = tree[i];

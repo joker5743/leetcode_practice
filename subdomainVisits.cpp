@@ -16,7 +16,7 @@ public:
             string domain = cpdomain.substr(space+1);
             cnt[domain] += count;
 
-            for (size_t i = 0; i < domain.size(); i++)
+            for (int i = 0; i < domain.size(); i++)
             {
                 if (domain[i] == '.')
                 {
@@ -25,7 +25,7 @@ public:
                 }
             }
         }
-        
+
         for (auto &&[subdomain, count] : cnt)
         {
             ans.emplace_back(to_string(count) + " " + subdomain);

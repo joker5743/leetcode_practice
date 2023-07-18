@@ -16,7 +16,7 @@ public:
 
         vector<int> ans(n);
         int left = 0, right = n -1;
-        for (size_t i = 0; i < n; i++)
+        for (int i = 0; i < n; i++)
         {
             // 选择比其大的最小数(升序排序实现)，若不存在这样的数字，则选择候选集合中的最小值（right指向最大的值与其配对）
             //田忌赛马
