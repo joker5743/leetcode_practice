@@ -8,7 +8,7 @@ class MinFallingPathSum{
   public:
   int minFallingPathSum(vector<vector<int>> &matrix){
     int n = matrix.size();
-    vector<vector<int>> dp = vector(n, vector<int>(n));
+    vector<vector<int>> dp(n, vector<int>(n));
     copy(matrix[0].begin(), matrix[0].end(), dp[0].begin());
 
     for (int i = 1; i < n; i++)

@@ -1,5 +1,5 @@
 // 652. 寻找重复的子树
-#include"data_structure.cpp"
+#include"data_structure.h"
 #include<vector>
 #include<string>
 #include<unordered_map>

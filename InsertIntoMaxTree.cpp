@@ -1,5 +1,5 @@
 // 998. 最大二叉树 II
-#include"data_structure.cpp"
+#include"data_structure.h"
 
 class InsertIntoMaxTree {
 public:

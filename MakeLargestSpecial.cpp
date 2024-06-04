@@ -5,7 +5,6 @@
 #include<algorithm>
 #include<numeric>
 #include<iostream>
-using namespace std::literals;
 
 class MakeLargestSpecial{
 public:
@@ -31,7 +30,7 @@ public:
         }
 
         std::sort(subs.begin(), subs.end(),std::greater<std::string>{});
-        std::string re = ""s;   //using namespace std::literals
+        std::string re = "";   //using namespace std::literals
         std::string ans = std::accumulate(subs.begin(), subs.end(), re);
         return ans;
     }

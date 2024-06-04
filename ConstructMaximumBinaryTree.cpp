@@ -1,5 +1,5 @@
 // 654. 最大二叉树
-#include"data_structure.cpp"
+#include"data_structure.h"
 #include<vector>
 using namespace std;
 

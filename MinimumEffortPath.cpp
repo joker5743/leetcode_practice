@@ -1,8 +1,54 @@
 // 1631. 最小体力消耗路径
 #include <vector>
 #include <queue>
-#include"limits.h"
+#include<limits>
+#include<numeric>
 using namespace std;
+
+// 并查集定义
+class UnionFind
+{
+private:
+  vector<int> parent;
+  vector<int> size;
+  int n;
+  int setcount; // 连通分量
+public:
+  UnionFind(int _n) : n(_n), setcount(_n), parent(_n), size(_n - 1)
+  {
+    iota(parent.begin(), parent.end(), 0);
+  }
+
+  int findset(int x)
+  {
+    return parent[x] == x ? x : parent[x] = findset(parent[x]);
+  }
+
+  bool unite(int x, int y)
+  {
+    x = findset(x);
+    y = findset(y);
+    if (x == y)
+    {
+      return false;
+    }
+    if (size[x] < size[y])
+    {
+      swap(x, y);
+    }
+    parent[y] = x;
+    size[x] += size[y];
+    --setcount;
+    return true;
+  }
+
+  bool connected(int x, int y)
+  {
+    x = findset(x);
+    y = findset(y);
+    return x == y;
+  }
+};
 
 class MinimumEffortPath
 {
@@ -123,7 +169,7 @@ public:
       if(seen[id]){
         continue;
       }
-      if(x == m - 1 && y = n -1){
+      if(x == m - 1 && y == n -1){
         break;
       }
       seen[id] = 1;
@@ -131,57 +177,12 @@ public:
       {
         int nx = x + dirs[i][0];
           int ny = y + dirs[i][1];
-          if (nx >= 0 && nx < m && ny >= 0 && ny < n && max(d, abs(heights[x][y] - heights[nx][ny])) < dist(nx * n + ny)){
-            dist(nx * n + ny) = max(d, abs(heights[x][y] - heights[nx][ny]));
-            q.emplace(nx, ny, dist(nx * n + ny));
+          if (nx >= 0 && nx < m && ny >= 0 && ny < n && max(d, abs(heights[x][y] - heights[nx][ny])) < dist[nx * n + ny]){
+            dist[nx * n + ny] = max(d, abs(heights[x][y] - heights[nx][ny]));
+            q.emplace(nx, ny, dist[nx * n + ny]);
           }
       }
     }
     return dist[m * n - 1];
-  }
-};
-
-// 并查集定义
-class UnionFind
-{
-private:
-  vector<int> parent;
-  vector<int> size;
-  int n;
-  int setcount; // 连通分量
-public:
-  UnionFind(int _n) : n(_n), setcount(_n), parent(_n), size(_n - 1)
-  {
-    iota(parent.begin(), parent.end(), 0);
-  }
-
-  int findset(int x)
-  {
-    return parent[x] == x ? x : parent[x] = findset(parent[x]);
-  }
-
-  bool unite(int x, int y)
-  {
-    x = findset(x);
-    y = findset(y);
-    if (x == y)
-    {
-      return false;
-    }
-    if (size[x] < size[y])
-    {
-      swap(x, y);
-    }
-    parent[y] = x;
-    size[x] += size[y];
-    --setcount;
-    return true;
-  }
-
-  bool connected(int x, int y)
-  {
-    x = findset(x);
-    y = findset(y);
-    return x == y;
   }
 };

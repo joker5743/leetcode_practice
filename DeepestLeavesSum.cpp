@@ -1,5 +1,5 @@
 // 1302. 层数最深叶子节点的和
-#include"data_structure.cpp"
+#include"data_structure.h"
 #include<queue>
 
 class DeepestLeavesSum

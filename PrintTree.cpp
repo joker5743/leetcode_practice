@@ -3,7 +3,7 @@
 #include<vector>
 #include<queue>
 #include<tuple>
-#include"data_structure.cpp"
+#include"data_structure.h"
 using namespace std;
 
 class PrintTree
