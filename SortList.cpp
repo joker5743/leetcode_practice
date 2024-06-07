@@ -36,28 +36,70 @@ class SortList{
             return Merge(sortList_1(head, mid), sortList_1(mid, tail));
         }
 
-        // 自底向上
-        ListNode* sortList_2(ListNode* head){
-            return nullptr;
-        }
-
-        // 合并两个有序链表
-        ListNode* Merge(ListNode *l1, ListNode *l2){
+        ListNode * Merge(ListNode* head1, ListNode* head2){
             ListNode *dummyHead = new ListNode(0);
             ListNode *temp = dummyHead;
-            while (l1 && l2)
-            {
-                if(l1->val < l2->val){
-                    temp->next = l1;
-                    l1 = l1->next;
+            while(head1 && head2){
+                if(head1->val < head2->val){
+                    temp->next = head1;
+                    head1 = head1->next;
                 }
                 else{
-                    temp->next = l2;
-                    l2 = l2->next;
+                    temp->next = head2;
+                    head2 = head2->next;
                 }
+                temp = temp->next;
             }
-
-            temp->next = l1 == nullptr ? l2 : l1;
+            if(head1)
+                temp->next = head1;
+            else if(head2)
+                temp->next = head2;
+            
             return dummyHead->next;
         }
+
+        // 自底向上
+        ListNode* sortList_2(ListNode* head){
+            if(head == nullptr)
+                return head;
+
+            int length = 0;
+            ListNode *node = head;
+            while(node){
+                length++;
+                node = node->next;
+            }
+
+            ListNode *dummyHead = new ListNode(0, head);
+            for (int subLength = 1; subLength < length; subLength <<=1)
+            {
+                ListNode *prev = dummyHead, *curr = dummyHead->next;
+                while(curr){
+                    ListNode *head1 = curr;
+                    for(int i = 1; i < subLength && curr->next != nullptr; i++){
+                        curr = curr->next;
+                    }
+                    ListNode *head2 = curr->next;
+                    curr->next = nullptr;
+                    curr = head2;
+                    for(int i = 1; i < subLength && curr != nullptr && curr->next != nullptr; i++){
+                        curr = curr->next;
+                    }
+                    ListNode *next = nullptr;
+                    if(curr){
+                        next = curr->next;
+                        curr->next = nullptr;
+                    }
+                    ListNode* merged = Merge(head1, head2);
+                    prev->next = merged;
+                    while (prev->next != nullptr)
+                    {
+                        prev = prev->next;
+                    }
+                    curr = next;
+                }
+            }
+            return dummyHead->next;
+        }
+
 };

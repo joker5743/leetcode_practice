@@ -39,4 +39,14 @@ public:
     Node(int _val);
 };
 
+struct DLinkedNode
+{
+    int key, value;
+    DLinkedNode *prev;
+    DLinkedNode *next;
+    DLinkedNode();
+    DLinkedNode(int _key, int _value);
+};
+
+
 #endif  //DATA_STRUCTURE
