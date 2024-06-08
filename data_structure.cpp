@@ -1,31 +1,23 @@
+#include"data_structure.h"
 // 常用数据结构定义
-#ifndef DATA_STRUCTURE
-#define DATA_STRUCTURE
 
 // 二叉树
-struct TreeNode{
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode(): val(0),left(nullptr),right(nullptr){}
-    TreeNode(int x): val(x),left(nullptr),right(nullptr){}
-    TreeNode(int x, TreeNode *left, TreeNode *right): val(x),left(left),right(right){}
-};
+TreeNode::TreeNode(): val(0),left(nullptr),right(nullptr){}
+TreeNode::TreeNode(int x): val(x),left(nullptr),right(nullptr){}
+TreeNode::TreeNode(int x, TreeNode *left, TreeNode *right): val(x),left(left),right(right){}
 
 // 单链表
-struct ListNode{
-    int value;
-    ListNode *next;
-    ListNode(): value(0), next(nullptr){}
-    ListNode(int x): value(x), next(nullptr){}
-    ListNode(int x, ListNode *next): value(x), next(next){}
-};
+ListNode::ListNode(): val(0), next(nullptr){}
+ListNode::ListNode(int x): val(x), next(nullptr){}
+ListNode::ListNode(int x, ListNode *next): val(x), next(next){}
 
-// 双向链表
-struct ListNode_Doubleforward{
-    int value;
-    ListNode_Doubleforward *next;
-    ListNode_Doubleforward *prev;
-};
 
-#endif
+// 带有随机指针的链表
+Node::Node(int _val) {
+    val = _val;
+    next = nullptr;
+    random = nullptr;
+}
+
+DLinkedNode::DLinkedNode():key(0), value(0),prev(nullptr),next(nullptr){}
+DLinkedNode::DLinkedNode(int _key, int _value): key(_key), value(_value), prev(nullptr), next(nullptr){}

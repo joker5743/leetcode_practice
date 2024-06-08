@@ -1,6 +1,6 @@
 // 623. 在二叉树中增加一行
 
-#include"data_structure.cpp"
+#include"data_structure.h"
 #include<vector>
 
 class AddOneRow{

@@ -1,6 +1,6 @@
 // 445. 两数相加2
 
-#include"data_structure.cpp"
+#include"data_structure.h"
 #include<stack>
 using namespace std;
 
@@ -11,12 +11,12 @@ class AddTwoNumbers2{
   ListNode*  AddTwoNumbers2_1(ListNode * l1, ListNode * l2){
     stack<int> s1, s2;
     while(l1){
-      s1.push(l1->value);
+      s1.push(l1->val);
       l1 = l1->next;
     }
 
     while(l2){
-      s2.push(l2->value);
+      s2.push(l2->val);
       l2 = l2->next;
     }
 
@@ -48,7 +48,7 @@ class AddTwoNumbers2{
   }
 
   ListNode* reverse_list(ListNode *head){
-    ListNode *prev = nullptr, cur = head;
+    ListNode *prev = nullptr, *cur = head;
     while (cur)
     {
       ListNode *next = cur->next;
@@ -65,8 +65,8 @@ class AddTwoNumbers2{
     int carry = 0;
     while (l1 || l2 || carry)
     {
-      if(l1) carry += l1->value;
-      if(l2) carry += l2->value;
+      if(l1) carry += l1->val;
+      if(l2) carry += l2->val;
       cur->next = new ListNode(carry % 10);
       cur = cur->next;
       carry /= 10;

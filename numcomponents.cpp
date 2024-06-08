@@ -1,7 +1,7 @@
 // 817. 链表组件
 
 #include<vector>
-#include"data_structure.cpp"
+#include"data_structure.h"
 #include<unordered_set>
 
 using namespace std;
@@ -19,7 +19,7 @@ public:
         int res = 0;
         while (head != nullptr)
         {
-            if(num_set.count(head->value)){
+            if(num_set.count(head->val)){
                 if (!in_set)
                 {
                     in_set = true;

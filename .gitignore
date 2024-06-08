@@ -1,6 +1,3 @@
 *.vscode*
 *build*
-main
-main.cpp
-main.exe
-CMakeLists.txt
+main*

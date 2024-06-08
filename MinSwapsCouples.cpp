@@ -27,9 +27,9 @@ public:
 		}
 		
 		unordered_map<int, int> m;
-		for (int i = 0; i < total; i++)
+		for (int i = 0; i < tot; i++)
 		{
-			int fx = get(f, i);
+			int fx = getf(f, i);
 			m[fx]++;
 		}
 		
@@ -54,8 +54,8 @@ public:
 	// 集合的合并,包含找到是同一组节点（一对情侣）所需要的交换连接。
 	void add(vector<int> &f, int x, int y)
 	{
-		int fx = get(f, x);
-		int fy = get(f, y);
+		int fx = getf(f, x);
+		int fy = getf(f, y);
 
 		f[fx] = fy;		//需要交换的两对情侣
 	}
@@ -99,9 +99,8 @@ public:
 						q.push(y);
 					}
 				}
-				
+				ret += cnt - 1;
 			}
-			ret += cnt - 1;
 		}
 		return ret;
 	}

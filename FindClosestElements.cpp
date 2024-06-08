@@ -18,7 +18,7 @@ public:
     }
 
 // 2.二分查找 + 双指针
-    vector<int> findClosestElements_1(vector<int>& arr, int k, int x) {
+    vector<int> findClosestElements_2(vector<int>& arr, int k, int x) {
         int right = lower_bound(arr.begin(), arr.end(), x) - arr.begin();
         int left = right - 1;
         while (k--)

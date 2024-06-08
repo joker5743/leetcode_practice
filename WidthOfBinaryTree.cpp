@@ -4,8 +4,7 @@
 #include<vector>
 #include<utility>
 #include<unordered_map>
-#include"data_structure.cpp"
-using namespace std;
+#include"data_structure.h"
 
 class WidthOfBinaryTree{
 public:
@@ -25,7 +24,7 @@ public:
                     temp.emplace_back(node->right, index * 2 + 1);
             }
             res = max(res, arr.back().second - arr[0].second + 1);
-            arr = move(temp);
+            arr = std::move(temp);
         }
         return res;
     }
@@ -34,14 +33,14 @@ public:
     using ULL = unsigned long long;
     int widthOfBinaryTree_dfs(TreeNode* root) {
         unordered_map<int, ULL> levelmin;
-        function<ULL(TreeNode*, int, ULL)> dfs = [&](TreeNode* node, int depth, ULL index){
+        function<ULL(TreeNode*, int, ULL)> dfs = [&](TreeNode* node, int depth, ULL index) -> ULL{
             if(node == nullptr)
-                return 0LL;
+                return 0;
             if(!levelmin.count(depth)){
                 levelmin[depth] = index;
             }
-            return max({index - levelmin[depth] + 1LL, dfs(node->left, depth + 1, index * 2), dfs(node->right, depth + 1, index * 2 + 1)});
+            return max(static_cast<ULL>(index - levelmin[depth] + 1), max(dfs(node->left, depth + 1, index * 2), dfs(node->right, depth + 1, index * 2 + 1)));
         };
-        return dfs(root, 1, 1LL);
+        return dfs(root, 1, 1);
     }
 };
