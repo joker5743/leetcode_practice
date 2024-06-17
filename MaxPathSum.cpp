@@ -1,30 +1,27 @@
 // 124. 二叉树中的最大路径和
 
-#include "data_structure.h"
 #include <limits>
 
-class MaxPathSum
-{
-public:
-    int maxSum = numeric_limits<int>::min();
+#include "data_structure.h"
 
-    int maxGain(TreeNode *root)
-    {
-        if (!root)
-            return 0;
+class MaxPathSum {
+ public:
+  int maxSum = numeric_limits<int>::min();
 
-        int left = max(0, maxGain(root->left));
-        int right = max(0, maxGain(root->right));
+  int maxGain(TreeNode *root) {
+    if (!root) return 0;
 
-        int priceNewpath = root->val + left + right;
+    int left = max(0, maxGain(root->left));
+    int right = max(0, maxGain(root->right));
 
-        maxSum = max(maxSum, priceNewpath);
-        return root->val + max(left, right);
-    }
+    int priceNewpath = root->val + left + right;
 
-    int maxPathSum(TreeNode *root)
-    {
-        maxGain(root);
-        return maxSum;
-    }
+    maxSum = max(maxSum, priceNewpath);
+    return root->val + max(left, right);
+  }
+
+  int maxPathSum(TreeNode *root) {
+    maxGain(root);
+    return maxSum;
+  }
 };

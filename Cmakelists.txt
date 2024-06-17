@@ -6,13 +6,14 @@ project(leetcode_practice-Cplus)
 
 # 设置C++标准  
 set(CMAKE_CXX_STANDARD 17)  
-set(CMAKE_CXX_STANDARD_REQUIRED ON)  
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
 
 file(GLOB cpp_files "*.cpp")
 # message("ALL cpp files are ${cpp_files}")
 
 # 添加源文件列表
-add_executable(main main.cpp function.cpp data_structure.cpp IsValidBST.cpp)
+add_executable(main main.cpp function.cpp data_structure.cpp FindKthLargest.cpp)
 # add_executable(main ${cpp_files})
 
 # set_target_properties(main PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})

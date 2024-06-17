@@ -1,9 +1,9 @@
 // 2525. 箱体分类
-#include<string>
+#include <string>
 using namespace std;
 
 class CategorizeBox {
-public:
+ public:
   string categorizeBox(int length, int width, int height, int mass) {
     long long maxd = max(length, max(width, height)),
               vol = 1L * length * width * height;
@@ -14,7 +14,7 @@ public:
       return "Bulky";
     else if (isHeavy)
       return "Heavy";
-    else{
+    else {
       return "Neither";
     }
   }
