@@ -1,29 +1,26 @@
 // 3. 无重复字符的最长子串
 
-#include<string>
-#include<unordered_set>
+#include <string>
+#include <unordered_set>
 using namespace std;
 
-class LengthOfLongestSubstring{
-    public:
-        int lengthOfLongestSubstring(string s){
-            unordered_set<char> occ;
-            int n = s.size();
-            int rk = -1, ans = 0;
-            for (int i = 0; i < n; i++)
-            {
-                // 不断移动左指针，寻找n次最长的子串
-                if(i != 0)
-                {
-                    occ.erase(s[i - 1]);
-                }
-                while (rk + 1 < n && !occ.count(s[rk + 1]))
-                {
-                    occ.insert(s[rk + 1]);
-                    rk++;
-                }
-                ans = max(ans, rk - i + 1);
-            }
-            return ans;
-        }
+class LengthOfLongestSubstring {
+ public:
+  int lengthOfLongestSubstring(string s) {
+    unordered_set<char> occ;
+    int n = s.size();
+    int rk = -1, ans = 0;
+    for (int i = 0; i < n; i++) {
+      // 不断移动左指针，寻找n次最长的子串
+      if (i != 0) {
+        occ.erase(s[i - 1]);
+      }
+      while (rk + 1 < n && !occ.count(s[rk + 1])) {
+        occ.insert(s[rk + 1]);
+        rk++;
+      }
+      ans = max(ans, rk - i + 1);
+    }
+    return ans;
+  }
 };

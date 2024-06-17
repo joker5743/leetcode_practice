@@ -1,56 +1,54 @@
 // 437. 路径总和III
 
-#include"data_structure.h"
-#include<unordered_map>
+#include <unordered_map>
 
-class PathSumV3{
-    public:
-        int pathSum_1(TreeNode* root, int targetSum) {
-            if(!root)
-                return 0;
-            
-            int res = rootSum(root, targetSum);
-            res += pathSum_1(root->left, targetSum);
-            res += pathSum_1(root->right, targetSum);
-            return res;
-        }
+#include "data_structure.h"
 
-        int rootSum(TreeNode *root, int targetSum){
-            if(!root)
-                return 0;
+class PathSumV3 {
+ public:
+  int pathSum_1(TreeNode* root, int targetSum) {
+    if (!root) return 0;
 
-            int ret = 0;
-            if(root->val == targetSum) {
-                ret += 1;
-            }
-            ret += rootSum(root->left, targetSum - root->val);
-            ret += rootSum(root->right, targetSum - root->val);
-            return ret;
-        }
+    int res = rootSum(root, targetSum);
+    res += pathSum_1(root->left, targetSum);
+    res += pathSum_1(root->right, targetSum);
+    return res;
+  }
 
-        // dfs回溯+前缀和
-        unordered_map<long long ,int> prefix;
+  int rootSum(TreeNode* root, int targetSum) {
+    if (!root) return 0;
 
-        int dfs(TreeNode *root, long long curr, int targetSum){
-            if(!root)
-                return 0;
+    int ret = 0;
+    if (root->val == targetSum) {
+      ret += 1;
+    }
+    ret += rootSum(root->left, targetSum - root->val);
+    ret += rootSum(root->right, targetSum - root->val);
+    return ret;
+  }
 
-            int ret = 0;
-            curr += root->val;
-            if(prefix.count(curr - targetSum)){
-                ret = prefix[curr - targetSum];
-            }
+  // dfs回溯+前缀和
+  unordered_map<long long, int> prefix;
 
-            prefix[curr]++;
-            ret += dfs(root->left, curr, targetSum);
-            ret += dfs(root->right, curr, targetSum);
-            prefix[curr]--;
+  int dfs(TreeNode* root, long long curr, int targetSum) {
+    if (!root) return 0;
 
-            return ret;
-        }
+    int ret = 0;
+    curr += root->val;
+    if (prefix.count(curr - targetSum)) {
+      ret = prefix[curr - targetSum];
+    }
 
-        int pathSum_2(TreeNode* root, int targetSum) {
-            prefix[0] = 1;
-            return dfs(root, 0, targetSum);
-        }
+    prefix[curr]++;
+    ret += dfs(root->left, curr, targetSum);
+    ret += dfs(root->right, curr, targetSum);
+    prefix[curr]--;
+
+    return ret;
+  }
+
+  int pathSum_2(TreeNode* root, int targetSum) {
+    prefix[0] = 1;
+    return dfs(root, 0, targetSum);
+  }
 };
