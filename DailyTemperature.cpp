@@ -2,6 +2,8 @@
 
 #include <stack>
 #include <vector>
+#include<numeric>
+#include <climits>
 using namespace std;
 
 class DailyTemperature {
