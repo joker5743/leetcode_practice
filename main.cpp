@@ -1,11 +1,11 @@
-#include"CountQuadruplets.cpp"
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 
+#include "CountQuadruplets.cpp"
 
-int main(){
+int main() {
   CountQuadruplets ques = CountQuadruplets();
-  std::vector input = {1, 3, 2 , 4, 5};
+  std::vector input = {1, 3, 2, 4, 5};
   int ans = ques.countQuadruplets(input);
   std::cout << "the program is finished here !" << std::endl;
   return 0;
