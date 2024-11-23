@@ -22,26 +22,27 @@ class CountGoodNodes {
       int treeSize = 0;
       int subTreeSize = 0;
 
-      for (int child : graph[node])
-      {
-        if(child != parent){
+      for (int child : graph[node]) {
+        if (child != parent) {
           // 如果该节点不是叶子节点，还有其他的子节点
-          int size = dfs(child, node);  //以child子节点为根的子树节点数目
-          if(subTreeSize == 0){
+          int size = dfs(child, node);  // 以child子节点为根的子树节点数目
+          if (subTreeSize == 0) {
             subTreeSize = size;
-          }
-          else if (size != subTreeSize) //如果当前child节点为根的子树节点数目，和同级别其他子节点为根的子树节点数目不等，则判断不是“好”节点。
+          } else if (
+              size !=
+              subTreeSize)  // 如果当前child节点为根的子树节点数目，和同级别其他子节点为根的子树节点数目不等，则判断不是“好”节点。
           {
             valid = false;
           }
-          treeSize += size; //该节点是好节点，把该节点为根的所在子树包含的节点数量加入到其父节点下的其中一部分。
+          treeSize +=
+              size;  // 该节点是好节点，把该节点为根的所在子树包含的节点数量加入到其父节点下的其中一部分。
         }
       }
-      
-      if(valid){
+
+      if (valid) {
         res++;
       }
-      return treeSize + 1;  //加上最后的根节点
+      return treeSize + 1;  // 加上最后的根节点
     };
 
     dfs(0, -1);

@@ -23,7 +23,7 @@ class SingleNonDuplicate {
     int low = 0, high = nums.size() - 1;
     while (low < high) {
       int mid = low + (high - low) / 2;
-      mid -= mid & 1; //寻找目标索引必定是偶数
+      mid -= mid & 1;  // 寻找目标索引必定是偶数
       if (nums[mid] == nums[mid + 1]) {
         low = mid + 2;
       } else {

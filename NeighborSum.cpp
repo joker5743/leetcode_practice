@@ -14,7 +14,7 @@ class NeighborSum {
         pos[grid[i][j]] = {i, j};
       }
     }
-    this->grid = std::move(grid);   //把网格内的值记录到类成员变量中
+    this->grid = std::move(grid);  // 把网格内的值记录到类成员变量中
   }
 
   int adjacentSum(int value) { return GetSum(value, 0); }

@@ -19,7 +19,8 @@ class CountKConstraintSubstringsV1 {
       count[s[j] - '0']++;
       while (count[0] > k && count[1] > k) {
         count[s[i] - '0']--;
-        right[i] = j;  // 此时子字符串[i, j]刚开始不满足约束条件时，右侧的索引位置
+        right[i] =
+            j;  // 此时子字符串[i, j]刚开始不满足约束条件时，右侧的索引位置
         i++;
       }
       prefix[j + 1] = prefix[j] + j - i + 1;
