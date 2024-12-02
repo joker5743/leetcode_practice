@@ -18,8 +18,9 @@ class ShortestDistanceAfterQueriesV2 {
 
     for (const auto& query : queries) {
       int k = roads[query[0]];  // 目前query之前的路况下，找到的最短路径
-      roads[query[0]] = query[1];  // 更新当前query后的路况，理论上更新后的路径终点query[1]
-                                   // >= k
+      roads[query[0]] =
+          query[1];  // 更新当前query后的路况，理论上更新后的路径终点query[1]
+                     // >= k
       while (k != -1 && k < query[1]) {
         int t = roads[k];  // 通过城市k能到达的城市t
         roads[k] = -1;     // 到达t的路线可以不经过城市K了

@@ -22,12 +22,12 @@ for /r "%DIRECTORY%" %%f in (%FILE_TYPES%) do (
 )
 
 :end
-echo 所有文件格式化完成。
+echo all files has been formated with clang-format
 pause
 exit /b
 
 :format_file
 %CLANG_FORMAT_PATH% -i "%~1" -style=Google
 @REM echo 已格式化文件：%~1
-echo file has been formated ：%~1
+echo file has been formated :%~1
 exit /b
